@@ -1,0 +1,45 @@
+@import "./base.css";
+
+
+
+.header {
+    margin-bottom: 50px;
+}
+
+.header-nav {
+
+    max-width: max-content;
+
+    padding: 20px 70px;
+    margin-inline: auto;
+
+    display: flex;
+    column-gap: 70px;
+
+    border-bottom: 2px solid var(--purple-bg);
+}
+
+.header-nav__item {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chip {
+    width: max-content;
+
+    padding: 3px 4px;
+    font: var(--chips);
+    border-radius: 4px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.chip_big {
+    padding: 5px 7px;
+    font: var(--chips-big);
+}
+
+.chip_purple {
+    background: var(--purple-bg);
+    color: var(--purple-primary);
+}

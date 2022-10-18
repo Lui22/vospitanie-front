@@ -1,0 +1,46 @@
+:root {
+    --purple-bg: #f0f0fe;
+    --purple-primary: #735bf3;
+    --calendar-text-primary: #777777;
+    --calendar-text-muted: #cbcbcb;
+    --text-primary: #000000;
+    --white-bg: #ffffff;
+    --page-bg: #f5f6f7;
+
+    --h2: 500 1.5rem/normal Montserrat;
+    --h1: 600 2.25rem/normal Montserrat;
+    --calendar-header: 500 1rem/normal Inter;
+    --chips: 500 0.875rem/normal Inter;
+    --chips-big: 500 1.125rem/normal Inter;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--page-bg);
+    transition: color 0.5s, background-color 0.5s;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font: var(--h1);
+}
+
+h2 {
+    font: var(--h2);
+}
