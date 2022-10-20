@@ -7,36 +7,14 @@
       {{ number }}
     </span>
 
-    <span class="chip"> Мероприятие </span>
+    <span v-if="hasEvent" class="chip chip_purple calendar-day__chip hoverable">
+      Мероприятие
+    </span>
   </div>
 </template>
 
 <script setup>
-defineProps(["isForeign", "number"]);
+defineProps(["isForeign", "number", "hasEvent"]);
 </script>
 
-<style scoped>
-.calendar-day {
-  width: 150px;
-  height: 100px;
-
-  padding: 12px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid var(--purple-bg);
-}
-
-.calendar-day__number {
-  color: var(--calendar-text-primary);
-
-  font-family: Inter, sans-serif;
-  font-weight: 500;
-  font-size: 21px;
-}
-
-.calendar-day__number_foreign {
-  color: var(--calendar-text-muted);
-}
-</style>
+<style scoped></style>

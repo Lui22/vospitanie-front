@@ -1,7 +1,5 @@
 @import "./base.css";
 
-
-
 .header {
     margin-bottom: 50px;
 }
@@ -31,7 +29,7 @@
     font: var(--chips);
     border-radius: 4px;
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--elevation-1);
 }
 
 .chip_big {
@@ -42,4 +40,251 @@
 .chip_purple {
     background: var(--purple-bg);
     color: var(--purple-primary);
+}
+
+.calendar {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+
+    background: var(--white-bg);
+
+    border-radius: 10px;
+    box-shadow: var(--elevation-1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-buttons {
+    display: flex;
+    column-gap: 15px;
+}
+
+.button {
+    cursor: pointer;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 5px;
+    border: 2px solid var(--purple-bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-grid {
+    border-radius: 8px;
+
+    overflow: clip;
+}
+
+.calendar-grid-header {
+    background: var(--purple-bg);
+
+    display: flex;
+}
+
+.calendar-grid-header__item {
+    font: var(--calendar-header);
+    color: var(--purple-primary);
+
+    padding: 20px 12px;
+
+    width: 150px;
+    height: 59px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-grid__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.event {
+    width: 350px;
+    border-radius: 14px;
+    padding: 10px;
+    row-gap: 10px;
+
+    background: var(--white-bg);
+    box-shadow: var(--elevation-2);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.event__header {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    color: var(--calendar-text-primary);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.event__accent {
+    border-radius: 100%;
+    width: 7px;
+    height: 7px;
+}
+
+.event__accent_purple {
+    background: var(--purple-primary);
+}
+
+.event__info {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 5px;
+}
+
+.event__name {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.event__type {
+    color: var(--calendar-text-primary);
+
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.events {
+    display: flex;
+    column-gap: 100px;
+
+    max-width: max-content;
+    margin: auto;
+}
+
+.events-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    max-width: 350px;
+}
+
+.calendar-day {
+    width: 150px;
+    height: 100px;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--purple-bg);
+}
+
+.calendar-day__number {
+    color: var(--calendar-text-primary);
+
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.calendar-day__number_foreign {
+    color: var(--calendar-text-muted);
+}
+
+.chat {
+    background: var(--page-bg);
+    width: 400px;
+
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+
+    box-shadow: var(--elevation-1);
+    border-radius: 15px;
+
+    overflow: clip;
+
+    margin-block: 20px;
+    max-height: calc(100vh - 40px);
+}
+
+.chat__header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 20px;
+    align-items: center;
+
+    box-shadow: var(--elevation-1);
+}
+
+.chat__name {
+    font: var(--chips-big);
+}
+
+.chat__messages {
+    padding: 15px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 15px;
+}
+
+.chat-message {
+    max-width: min(80%, max-content);
+
+    padding: 10px;
+    border-radius: 8px;
+    font: var(--chips);
+}
+
+.chat-message_ingoing {
+    background: var(--white-bg);
+}
+
+.chat-message_outgoing {
+    align-self: end;
+    text-align: right;
+
+    background: var(--purple-bg);
+    color: var(--purple-primary);
+}
+
+.chat__input {
+    margin: 15px 20px;
+    padding: 10px 10px 10px 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--white-bg);
+    border-radius: 12px;
+
+    box-shadow: var(--elevation-2);
+}
+
+.button_accent {
+    border-radius: 9px;
+
+    background: var(--purple-primary);
+    border: none;
+
+    width: 40px;
+    height: 40px;
 }
