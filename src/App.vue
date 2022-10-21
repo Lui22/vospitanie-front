@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import ChatComponent from "@/components/ChatComponent.vue";
-import { ref } from "vue";
 import { useChatStore } from "@/stores/modals";
 import { storeToRefs } from "pinia";
 
