@@ -1,13 +1,12 @@
 <template>
   <div class="calendar">
     <div class="calendar-header">
-      <h2>Октябрь 2022</h2>
-
+      <h2 v-if="monthInfo !== 'undefined undefined'">{{ monthInfo }}</h2>
       <div class="calendar-buttons">
-        <div class="button">
+        <div class="button" @click="decreaseMonth">
           <img src="src/assets/icons/chevron-left.svg" />
         </div>
-        <div class="button">
+        <div class="button" @click="increaseMonth">
           <img src="src/assets/icons/chevron-right.svg" />
         </div>
       </div>
@@ -23,91 +22,68 @@
         <div class="calendar-grid-header__item">Суббота</div>
         <div class="calendar-grid-header__item">Воскресенье</div>
       </div>
-      <div class="calendar-grid__grid">
+      <div class="calendar-grid__grid" ref="targetEl">
         <CalendarDayComponent
-          :is-foreign="true"
-          :number="26"
-          :has-event="true"
+          v-for="(el, ind) in calendar.days"
+          :key="ind"
+          :event="el.event"
+          :is-foreign="el.is_foreign"
+          :number="el.day"
         />
-        <CalendarDayComponent :is-foreign="true" :number="27" />
-        <CalendarDayComponent :is-foreign="true" :number="28" />
-        <CalendarDayComponent :is-foreign="true" :number="29" />
-        <CalendarDayComponent
-          :is-foreign="true"
-          :number="30"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="1" />
-        <CalendarDayComponent :is-foreign="false" :number="2" />
-        <CalendarDayComponent :is-foreign="false" :number="3" />
-        <CalendarDayComponent :is-foreign="false" :number="4" />
-        <CalendarDayComponent :is-foreign="false" :number="5" />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="6"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="7" />
-        <CalendarDayComponent :is-foreign="false" :number="8" />
-        <CalendarDayComponent :is-foreign="false" :number="9" />
-        <CalendarDayComponent :is-foreign="false" :number="10" />
-        <CalendarDayComponent :is-foreign="false" :number="11" />
-        <CalendarDayComponent :is-foreign="false" :number="12" />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="13"
-          :has-event="true"
-        />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="14"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="15" />
-        <CalendarDayComponent :is-foreign="false" :number="16" />
-        <CalendarDayComponent :is-foreign="false" :number="17" />
-        <CalendarDayComponent :is-foreign="false" :number="18" />
-        <CalendarDayComponent :is-foreign="false" :number="19" />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="20"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="21" />
-        <CalendarDayComponent :is-foreign="false" :number="22" />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="23"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="24" />
-        <CalendarDayComponent :is-foreign="false" :number="25" />
-        <CalendarDayComponent :is-foreign="false" :number="26" />
-        <CalendarDayComponent :is-foreign="false" :number="27" />
-        <CalendarDayComponent :is-foreign="false" :number="28" />
-        <CalendarDayComponent :is-foreign="false" :number="29" />
-        <CalendarDayComponent
-          :is-foreign="false"
-          :number="30"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="false" :number="31" />
-        <CalendarDayComponent
-          :is-foreign="true"
-          :number="1"
-          :has-event="true"
-        />
-        <CalendarDayComponent :is-foreign="true" :number="2" />
-        <CalendarDayComponent :is-foreign="true" :number="3" />
-        <CalendarDayComponent :is-foreign="true" :number="4" />
-        <CalendarDayComponent :is-foreign="true" :number="5" />
-        <CalendarDayComponent :is-foreign="true" :number="6" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import CalendarDayComponent from "@/components/CalendarDayComponent.vue";
+import { computed, onMounted, ref, watch } from "vue";
+import axiosRequest from "@/helpers/axiosRequest";
+import { useCalendarStore } from "@/stores/calendar";
+import { storeToRefs } from "pinia";
+import { useMotion } from "@vueuse/motion";
+import scrollTransition from "@/helpers/scrollTransition";
+
+const targetEl = ref();
+const { apply } = useMotion(targetEl, scrollTransition);
+
+const calendarStore = useCalendarStore();
+const { monthNumber } = storeToRefs(calendarStore);
+const { increaseMonth, decreaseMonth } = calendarStore;
+
+const calendar = ref([]);
+const getCalendar = async () => {
+  try {
+    console.log(monthNumber.value);
+    calendar.value = (
+      await axiosRequest.get("calendar", {
+        params: {
+          monthNumber: monthNumber.value,
+        },
+      })
+    ).data;
+    apply("enter");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const monthInfo = computed(() => {
+  return `${calendar.value.month_name} ${calendar.value.year}`;
+});
+
+onMounted(() => {
+  getCalendar();
+});
+
+watch(monthNumber, (value, oldValue) => {
+  if (value > oldValue) {
+    apply("to_right");
+  } else if (value < oldValue) {
+    apply("to_left");
+  }
+
+  getCalendar(monthNumber.value);
+});
 </script>
 
 <style scoped></style>

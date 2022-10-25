@@ -1,20 +1,30 @@
 <template>
   <div class="calendar-day">
     <span
-      class="calendar-day__number"
       :class="{ 'calendar-day__number_foreign': isForeign }"
+      class="calendar-day__number"
     >
       {{ number }}
     </span>
 
-    <span v-if="hasEvent" class="chip chip_purple calendar-day__chip hoverable">
-      Мероприятие
-    </span>
+    <span v-if="event" :class="chipClasses"> Мероприятие </span>
   </div>
 </template>
 
 <script setup>
-defineProps(["isForeign", "number", "hasEvent"]);
+import { computed } from "vue";
+
+const props = defineProps(["isForeign", "number", "event"]);
+
+const chipClasses = computed(() => {
+  return {
+    chip: true,
+    "calendar-day__chip": true,
+    hoverable: true,
+    chip_purple: props.event?.event_type_id === 1,
+    chip_orange: props.event?.event_type_id === 2,
+  };
+});
 </script>
 
 <style scoped></style>

@@ -1,6 +1,10 @@
 :root {
     --purple-bg: #f0f0fe;
     --purple-primary: #735bf3;
+
+    --orange-bg: rgba(255, 150, 27, 0.1);;
+    --orange-primary: #ff9f2d;
+
     --calendar-text-primary: #777777;
     --calendar-text-muted: #cbcbcb;
     --text-primary: #000000;

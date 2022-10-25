@@ -42,6 +42,11 @@
     color: var(--purple-primary);
 }
 
+.chip_orange {
+    background: var(--orange-bg);
+    color: var(--orange-primary);
+}
+
 .calendar {
     padding: 20px;
 
@@ -145,6 +150,10 @@
     background: var(--purple-primary);
 }
 
+.event__accent_orange {
+    background: var(--orange-primary);
+}
+
 .event__info {
     display: flex;
     flex-direction: column;
@@ -180,6 +189,12 @@
     row-gap: 30px;
 
     max-width: 350px;
+}
+
+.events-column__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
 }
 
 .calendar-day {
