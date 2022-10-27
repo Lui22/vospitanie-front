@@ -5,4 +5,7 @@ export default {
   enter: {
     opacity: 1,
   },
+  leave: {
+    opacity: 0,
+  },
 };

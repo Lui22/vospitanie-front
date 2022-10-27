@@ -3,10 +3,27 @@ import { RouterLink, RouterView } from "vue-router";
 import ChatComponent from "@/components/ChatComponent.vue";
 import { useChatStore } from "@/stores/modals";
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
+import axiosRequest from "@/helpers/axiosRequest";
 
 const chatStore = useChatStore();
 const { isChatOpened } = storeToRefs(chatStore);
 const { openChat, closeChat } = chatStore;
+
+const loadTempUser = async () => {
+  try {
+    const tempUserToken = (await axiosRequest.post("tempUser")).data.uuid;
+
+    console.log(tempUserToken);
+    localStorage.setItem("bearer", tempUserToken);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+onMounted(() => {
+  if (!localStorage.getItem("bearer")) loadTempUser();
+});
 </script>
 
 <template>

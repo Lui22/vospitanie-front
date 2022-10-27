@@ -30,7 +30,7 @@ import axiosRequest from "@/helpers/axiosRequest";
 import { useCalendarStore } from "@/stores/calendar";
 import { storeToRefs } from "pinia";
 import { useMotion } from "@vueuse/motion";
-import scrollTransition from "@/helpers/scrollTransition";
+import scrollTransition from "@/helpers/calendarScrollTransition";
 import fadeTransition from "@/helpers/fadeTransition";
 
 const targetEl = ref();
@@ -53,13 +53,13 @@ const getEvents = async () => {
     ).data.data;
     apply("enter");
   } catch (e) {
-    console.log(e.toJSON());
+    console.log(e);
   }
 };
 
 onMounted(async () => {
   initializeWithCurrentMonth();
-  getEvents();
+  await getEvents();
 });
 
 watch(monthNumber, () => {

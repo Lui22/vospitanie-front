@@ -4,10 +4,10 @@
       <h2 v-if="monthInfo !== 'undefined undefined'">{{ monthInfo }}</h2>
       <div class="calendar-buttons">
         <div class="button" @click="decreaseMonth">
-          <img src="src/assets/icons/chevron-left.svg" />
+          <img src="../assets/icons/chevron-left.svg" />
         </div>
         <div class="button" @click="increaseMonth">
-          <img src="src/assets/icons/chevron-right.svg" />
+          <img src="../assets/icons/chevron-right.svg" />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ import axiosRequest from "@/helpers/axiosRequest";
 import { useCalendarStore } from "@/stores/calendar";
 import { storeToRefs } from "pinia";
 import { useMotion } from "@vueuse/motion";
-import scrollTransition from "@/helpers/scrollTransition";
+import scrollTransition from "@/helpers/calendarScrollTransition";
 
 const targetEl = ref();
 const { apply } = useMotion(targetEl, scrollTransition);
@@ -53,7 +53,6 @@ const { increaseMonth, decreaseMonth } = calendarStore;
 const calendar = ref([]);
 const getCalendar = async () => {
   try {
-    console.log(monthNumber.value);
     calendar.value = (
       await axiosRequest.get("calendar", {
         params: {
@@ -77,9 +76,9 @@ onMounted(() => {
 
 watch(monthNumber, (value, oldValue) => {
   if (value > oldValue) {
-    apply("to_right");
-  } else if (value < oldValue) {
     apply("to_left");
+  } else if (value < oldValue) {
+    apply("to_right");
   }
 
   getCalendar(monthNumber.value);
