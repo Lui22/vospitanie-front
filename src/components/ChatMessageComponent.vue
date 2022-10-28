@@ -1,10 +1,21 @@
 <template>
-  <div class="chat-message chat-message_outgoing">
-    ваыдлоывdsfaaaaaaa sd sdafs fsa fs dfsdf sdfsfdasfasf as оадловаывафылдо
+  <div :class="messageClass">
+    {{ message }}
   </div>
-  <div class="chat-message chat-message_ingoing">слово</div>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+
+const props = defineProps(["message", "outgoing"]);
+
+const messageClass = computed(() => {
+  return {
+    "chat-message": true,
+    "chat-message_outgoing": props.outgoing,
+    "chat-message_ingoing": !props.outgoing,
+  };
+});
+</script>
 
 <style scoped></style>

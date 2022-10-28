@@ -12,7 +12,7 @@ const { openChat, closeChat } = chatStore;
 
 const loadTempUser = async () => {
   try {
-    const tempUserToken = (await axiosRequest.post("tempUser")).data.uuid;
+    const tempUserToken = (await axiosRequest.post("tempUser")).data.api_token;
 
     console.log(tempUserToken);
     localStorage.setItem("bearer", tempUserToken);

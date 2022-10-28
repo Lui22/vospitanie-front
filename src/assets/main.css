@@ -71,7 +71,7 @@
     column-gap: 15px;
 }
 
-.button {
+.button, .splide__arrow {
     cursor: pointer;
 
     width: 35px;
@@ -79,6 +79,7 @@
 
     border-radius: 5px;
     border: 2px solid var(--purple-bg);
+    background: transparent;
 
     display: flex;
     align-items: center;
@@ -176,10 +177,12 @@
 }
 
 .events {
+    width: 1540px;
+
     display: flex;
     column-gap: 100px;
 
-    max-width: max-content;
+    /*max-width: max-content;*/
     margin: auto;
 }
 
@@ -225,7 +228,7 @@
     background: var(--page-bg);
     width: 400px;
 
-    position: absolute;
+    position: fixed;
     right: 30px;
     bottom: 0;
 
@@ -313,4 +316,50 @@
 
     width: 40px;
     height: 40px;
+}
+
+.events__text {
+    margin-block: 20px;
+    max-width: 80%;
+    white-space: break-spaces;
+
+    font: var(--chips);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.text__link {
+    color: #000;
+}
+
+.chat_empty {
+    color: var(--calendar-text-muted);
+
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+}
+
+.slider__header {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 20px;
+    color: #ffffff;
+    background-size: cover;
+}
+
+.splide {
+    margin-bottom: 50px;
+}
+
+.splide__arrows {
+    position: initial;
+    top: 50%;
+}
+
+.splide__arrow * {
+    fill: var(--purple-primary);
 }

@@ -35,7 +35,16 @@
       </div>
     </div>
     <div class="chat__messages">
-      <ChatMessageComponent />
+      <ChatMessageComponent
+        v-for="(el, ind) in messages"
+        :key="ind"
+        :message="el.message"
+        :outgoing="el.outgoing"
+        v-motion-slide-bottom
+      />
+      <span class="chat_empty" v-if="!messages.length">
+        Напишите сообщение для получения помощи
+      </span>
     </div>
     <div class="chat-form">
       <input
@@ -44,8 +53,9 @@
         placeholder="Введите текст..."
         type="text"
         @keydown.esc="$emit('close')"
+        v-model="messageText"
       />
-      <button class="button button_accent">
+      <button class="button button_accent" @click="sendMessage">
         <img alt="" src="../assets/icons/send-fill.svg" />
       </button>
     </div>
@@ -57,17 +67,39 @@
 <script setup>
 import ChatMessageComponent from "@/components/ChatMessageComponent.vue";
 import { useMotions } from "@vueuse/motion";
-import { onBeforeUnmount, onMounted, reactive } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import axiosRequest from "@/helpers/axiosRequest";
 
 const emit = defineEmits(["close"]);
 
-const messages = reactive();
-const loadMessages = async () => {};
+const messages = ref({});
+const loadMessages = async () => {
+  messages.value = (await axiosRequest.get("message")).data.data;
+};
+
+const messageText = ref("");
+const sendMessage = () => {
+  try {
+    axiosRequest.post("message", {
+      message: messageText.value,
+    });
+
+    messages.value.push({
+      message: messageText.value,
+      outgoing: true,
+    });
+    messageText.value = "";
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 onMounted(() => {
   const { backdrop, modal } = useMotions();
   backdrop.apply("enter");
   modal.apply("enter");
+
+  loadMessages();
 });
 
 onBeforeUnmount(async () => {});

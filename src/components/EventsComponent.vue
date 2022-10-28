@@ -30,7 +30,6 @@ import axiosRequest from "@/helpers/axiosRequest";
 import { useCalendarStore } from "@/stores/calendar";
 import { storeToRefs } from "pinia";
 import { useMotion } from "@vueuse/motion";
-import scrollTransition from "@/helpers/calendarScrollTransition";
 import fadeTransition from "@/helpers/fadeTransition";
 
 const targetEl = ref();
