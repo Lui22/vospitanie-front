@@ -58,6 +58,7 @@
 
     border-radius: 10px;
     box-shadow: var(--elevation-1);
+    margin-bottom: 50px;
 }
 
 .calendar-header {
@@ -319,6 +320,8 @@
 }
 
 .events__text {
+    list-style: none;
+
     margin-block: 20px;
     max-width: 80%;
     white-space: break-spaces;
@@ -330,6 +333,29 @@
 
 .text__link {
     color: #000;
+}
+
+.text__link_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 2em;
+    box-sizing: content-box;
+
+    gap: 30px;
+    text-decoration: none;
+    box-shadow: var(--elevation-1);
+}
+
+.text__link_image img {
+    max-height: 90px;
+}
+
+.text__link_image span {
+    text-align: center;
 }
 
 .chat_empty {
@@ -362,4 +388,39 @@
 
 .splide__arrow * {
     fill: var(--purple-primary);
+}
+
+.events__text-item {
+    counter-increment: steps;
+}
+
+.events__text-item::before {
+    content: counter(steps);
+
+    margin-right: 2em;
+    color: var(--purple-primary);
+    background: var(--purple-bg);
+    border-radius: 100%;
+    display: inline-grid;
+    place-items: center;
+
+    box-shadow: var(--elevation-1);
+
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: 30px;
+    left: -45px;
+}
+
+.text-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 20px;
+
+    max-width: unset;
+
+    font: var(--chips);
 }

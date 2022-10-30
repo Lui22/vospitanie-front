@@ -13,28 +13,44 @@
       </ul>
 
       <h2>Полезные ссылки</h2>
-      <ul class="events__text">
+      <ul class="text-links events__text">
         <li>
-          <a class="text__link" href="https://infourok.ru/">
-            Образовательный портал Инфоурок
+          <a
+            class="text__link text__link_image hoverable"
+            href="https://infourok.ru/"
+          >
+            <img src="../assets/links/logo-redesign.svg" alt="" />
+            <span>Образовательный портал Инфоурок</span>
           </a>
         </li>
         <li>
           <a
-            class="text__link"
+            class="text__link text__link_image hoverable"
             href="https://ipo.msk.ru/povyshenie-kvalifikacii/"
           >
-            Повышение квалификации в Институте профессионального образования
+            <img src="../assets/links/main-logo.png" alt="" />
+            <span
+              >Повышение квалификации в Институте профессионального
+              образования</span
+            >
           </a>
         </li>
         <li>
-          <a class="text__link" href="https://razgovor.edsoo.ru/">
-            Разговоры о важном
+          <a
+            class="text__link text__link_image hoverable"
+            href="https://razgovor.edsoo.ru/"
+          >
+            <img src="../assets/links/r.jpg" alt="" />
+            <span>Разговоры о важном</span>
           </a>
         </li>
         <li>
-          <a class="text__link" href="https://education.apkpro.ru/">
-            Цифровая экосистема дополнительного профессионального образования
+          <a
+            class="text__link text__link_image hoverable"
+            href="https://education.apkpro.ru/"
+          >
+            <img src="../assets/links/apkpro.svg" alt="" />
+            <span>Цифровая экосистема дополнительного профессионального образования</span>
           </a>
         </li>
       </ul>

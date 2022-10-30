@@ -4,7 +4,7 @@
       <SplideSlide>
         <h1
           class="slider__header"
-          style="background-image: url('/src/assets/events/1.jpg')"
+          style="background-image: url('../assets/events/1.jpg')"
         >
           В ЧРТ провели профпробу для будущих сисадминов и графических
           дизайнеров
@@ -13,7 +13,7 @@
       <SplideSlide>
         <h1
           class="slider__header"
-          style="background-image: url('/src/assets/events/1.jpg')"
+          style="background-image: url('../assets/events/1.jpg')"
         >
           В ЧРТ провели профпробу для будущих сисадминов и графических
           дизайнеров

@@ -32,7 +32,7 @@ onMounted(() => {
   <header class="header">
     <nav class="header-nav">
       <RouterLink class="header-nav__item chip chip_purple chip_big" to="/">
-        Home
+        Календарь мероприятий
       </RouterLink>
       <RouterLink
         class="header-nav__item chip chip_purple chip_big"
