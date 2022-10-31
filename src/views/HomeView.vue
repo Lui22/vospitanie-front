@@ -4,19 +4,23 @@
       <SplideSlide>
         <h1
           class="slider__header"
-          style="background-image: url('../assets/events/1.jpg')"
+          style="
+            background-image: url('../assets/header/1.jpg');
+            background-position-y: 39%;
+          "
         >
-          В ЧРТ провели профпробу для будущих сисадминов и графических
-          дизайнеров
+          Состоялась торжественная линейка и награждение в честь Дня знаний!
         </h1>
       </SplideSlide>
       <SplideSlide>
         <h1
           class="slider__header"
-          style="background-image: url('../assets/events/1.jpg')"
+          style="
+            background-image: url('../assets/header/2.jpg');
+            background-position-y: 43%;
+          "
         >
-          В ЧРТ провели профпробу для будущих сисадминов и графических
-          дизайнеров
+          В ЧРТ провели концерт в день учителя
         </h1>
       </SplideSlide>
     </Splide>

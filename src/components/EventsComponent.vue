@@ -7,6 +7,7 @@
         <EventSingleComponent
           v-for="(el, ind) in events"
           :key="ind"
+          :id="el.id"
           :date="el.date"
           :name="el.name"
           :time-from="el.time_start"

@@ -4,6 +4,7 @@
       <h1>Педагогам</h1>
 
       <h2>Создать мероприятие</h2>
+      <NewEventComponent />
 
       <h2>Рабочая программа</h2>
       <ul class="events__text">
@@ -50,7 +51,10 @@
             href="https://education.apkpro.ru/"
           >
             <img src="../assets/links/apkpro.svg" alt="" />
-            <span>Цифровая экосистема дополнительного профессионального образования</span>
+            <span
+              >Цифровая экосистема дополнительного профессионального
+              образования</span
+            >
           </a>
         </li>
       </ul>
@@ -61,3 +65,9 @@
 <script setup></script>
 
 <style scoped></style>
+<script>
+import NewEventComponent from "@/components/NewEventComponent.vue";
+export default {
+  components: { NewEventComponent },
+};
+</script>

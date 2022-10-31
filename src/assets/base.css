@@ -2,8 +2,29 @@
     --purple-bg: #f0f0fe;
     --purple-primary: #735bf3;
 
-    --orange-bg: rgba(255, 150, 27, 0.1);;
+    --orange-bg: rgba(255, 150, 27, 0.1);
     --orange-primary: #ff9f2d;
+
+    --blue-bg: rgba(0, 133, 255, 0.1);
+    --blue-primary: #0085FF;
+
+    --gray-bg: #E8E8E8;
+    --gray-primary: #585757;
+
+    --red-bg: rgba(255, 59, 59, 0.1);
+    --red-primary: #E92C2C;
+
+    --green-bg: rgba(0, 186, 52, 0.1);
+    --green-primary: #00BA34;
+
+    --yellow-bg: #FFF8E1;
+    --yellow-primary: #FFEB3B;
+
+    --pink-bg: #FFDEE5;
+    --pink-primary: #FF5177;
+
+    --teal-bg: #D6F5F2;
+    --teal-primary: #009688;
 
     --calendar-text-primary: #777777;
     --calendar-text-muted: #cbcbcb;
@@ -47,10 +68,17 @@ body, #app {
 
 h1 {
     font: var(--h1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 h2 {
     font: var(--h2);
+}
+
+input:focus {
+    outline: none;
 }
 
 .modal {
@@ -72,4 +100,12 @@ h2 {
 
 .hoverable:hover {
     transform: translateY(-5px) scale(1.015);
+}
+
+.centered {
+    margin-inline: auto;
+}
+
+.fluid {
+    width: 1430px;
 }

@@ -1,9 +1,7 @@
 <template>
   <div class="events">
-    <div class="events_column">
+    <div class="events_column fluid">
       <h1>Студентам</h1>
-
-      <h2>Предложить мероприятие</h2>
 
       <h2>Полезные ссылки</h2>
       <ul class="text-links events__text">
@@ -29,10 +27,15 @@
           </a>
         </li>
       </ul>
+
+      <h2>Предложить мероприятие</h2>
+      <NewEventComponent class="centered" />
     </div>
   </div>
 </template>
 
-<script setup></script>
-
 <style scoped></style>
+
+<script setup>
+import NewEventComponent from "@/components/NewEventComponent.vue";
+</script>
