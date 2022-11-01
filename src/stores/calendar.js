@@ -13,6 +13,7 @@ export const useCalendarStore = defineStore("calendar", () => {
   };
 
   const initializeWithCurrentMonth = () => {
+    if (monthNumber.value) return;
     const now = new Date();
     monthNumber.value = now.getMonth() + 1;
   };
