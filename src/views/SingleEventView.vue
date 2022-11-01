@@ -13,6 +13,28 @@
         {{ eventData.time_end }}
       </div>
 
+      <div class="event__attend">
+        <div class="events-column">
+          <h2>Участники</h2>
+          <div class="events-column__column">
+            <EventAttenderComponent
+              v-for="(el, ind) in eventData.attenders"
+              :key="ind"
+              :name="el.name"
+              :group="el.group"
+            />
+          </div>
+        </div>
+        <div class="">
+          <SignupForEventComponent
+            :eventId="eventId"
+            v-if="eventData.can_sign_up"
+            @close="destroySignup"
+            ref="signup"
+          />
+        </div>
+      </div>
+
       <p class="event__description" v-if="false">
         Краткое описание мероприятия содержит в себе дополнительную информацию,
         которая непонятна из заполняемых данных. Ее заполняет пользователь,
@@ -134,6 +156,10 @@
 import { computed, onMounted, ref } from "vue";
 import axiosRequest from "@/helpers/axiosRequest";
 import { useRoute } from "vue-router";
+import SignupForEventComponent from "@/components/SignupForEventComponent.vue";
+import { useMotion } from "@vueuse/motion";
+import fadeTransition from "@/helpers/fadeTransition";
+import EventAttenderComponent from "@/components/EventAttenderComponent.vue";
 
 const route = useRoute();
 
@@ -141,6 +167,12 @@ const eventData = ref({});
 const eventId = route.params.eventId;
 const getInfo = async () => {
   eventData.value = (await axiosRequest.get(`event/${eventId}`)).data.data;
+};
+
+const signup = ref();
+const instance = useMotion(signup, fadeTransition);
+const destroySignup = () => {
+  instance.variant.value = "leave";
 };
 
 onMounted(() => {

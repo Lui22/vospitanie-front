@@ -242,6 +242,7 @@
 }
 
 .event__info {
+    color: #000;
     display: flex;
     flex-direction: column;
 
@@ -556,6 +557,23 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+.signup-event-form {
+    display: flex;
+    margin-block: unset;
+    z-index: 1;
+}
+
+.signup-event-message {
+    position: absolute;
+    left: calc(50% - 165px);
+    top: 50%;
+    width: 330px;
+    text-align: center;
+    font: var(--chips);
+    color: var(--calendar-text-primary);
+    font-size: 16px;
+}
+
 .form__input-group {
     display: flex;
     flex-direction: column;
@@ -604,4 +622,10 @@
 
 .calendar-day:hover:not(.calendar-day_foreign) .calendar-day__event-name {
     color: var(--text-primary);
+}
+
+.event__attend {
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
 }
