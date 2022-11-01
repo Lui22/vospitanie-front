@@ -284,7 +284,7 @@
 
 .calendar-day {
     width: 150px;
-    height: 100px;
+    min-height: 100px;
 
     padding: 12px;
 
@@ -292,6 +292,7 @@
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid var(--purple-bg);
+    gap: 7px;
 }
 
 .calendar-day__number {
@@ -302,8 +303,9 @@
     font-size: 21px;
 }
 
-.calendar-day__number_foreign {
-    color: var(--calendar-text-muted);
+.calendar-day_foreign span{
+    /*color: var(--calendar-text-muted);*/
+    opacity: .5;
 }
 
 .chat {
@@ -575,4 +577,27 @@
 .new-event__button {
     align-self: end;
     justify-self: end;
+}
+
+.calendar-day__event-name {
+    transition: .15s ease-out all;
+
+    font: var(--chips);
+    color: var(--calendar-text-primary);
+    font-size: 12px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.calendar-day:hover:not(.calendar-day_foreign) {
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.calendar-day:hover:not(.calendar-day_foreign) .calendar-day__event-name {
+    color: var(--text-primary);
 }

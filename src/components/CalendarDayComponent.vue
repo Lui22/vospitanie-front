@@ -1,18 +1,21 @@
 <template>
-  <div class="calendar-day">
-    <span
-      :class="{ 'calendar-day__number_foreign': isForeign }"
-      class="calendar-day__number"
-    >
+  <div
+    class="calendar-day"
+    :class="{ 'calendar-day_foreign': isForeign }"
+    @click="openEvent"
+  >
+    <span class="calendar-day__number">
       {{ number }}
     </span>
 
+    <span v-if="event" class="calendar-day__event-name">{{ event.name }}</span>
     <span v-if="event" :class="chipClasses"> {{ event.event_type_name }} </span>
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps(["isForeign", "number", "event"]);
 
@@ -20,7 +23,7 @@ const chipClasses = computed(() => {
   return {
     chip: true,
     "calendar-day__chip": true,
-    hoverable: true,
+    // hoverable: true,
     chip_gray: props.event?.event_type_id === 1,
     chip_orange: props.event?.event_type_id === 2,
     chip_blue: props.event?.event_type_id === 3,
@@ -32,6 +35,11 @@ const chipClasses = computed(() => {
     chip_purple: props.event?.event_type_id === 9,
   };
 });
+
+const router = useRouter();
+const openEvent = () => {
+  router.push(`/event/${props.event.id}`);
+};
 </script>
 
 <style scoped></style>

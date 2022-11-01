@@ -1,5 +1,5 @@
 <template>
-  <div class="event hoverable" @click="openSingle">
+  <div class="event hoverable" @click="openEvent">
     <div class="event__header">
       <div :class="eventAccentColor" />
       <span>
@@ -50,7 +50,7 @@ const eventAccentColor = computed(() => {
 });
 
 const router = useRouter();
-const openSingle = () => {
+const openEvent = () => {
   router.push(`/event/${props.id}`);
 };
 </script>
