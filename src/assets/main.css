@@ -149,6 +149,7 @@
     justify-content: center;
 }
 
+
 .calendar-grid__grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -236,6 +237,9 @@
     background: var(--teal-primary);
 }
 
+.event__accent_border {
+    border: 1px solid var(--text-primary);
+}
 
 .event__info {
     display: flex;

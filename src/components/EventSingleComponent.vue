@@ -46,6 +46,7 @@ const eventAccentColor = computed(() => {
     event__accent_pink: props.typeId === 7,
     event__accent_teal: props.typeId === 8,
     event__accent_purple: props.typeId === 9,
+    event__accent_border: props.typeId === 10,
   };
 });
 

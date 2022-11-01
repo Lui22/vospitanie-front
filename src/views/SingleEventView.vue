@@ -159,6 +159,7 @@ const eventAccentColor = computed(() => {
     event__accent_pink: eventData.value.event_type_id === 7,
     event__accent_teal: eventData.value.event_type_id === 8,
     event__accent_purple: eventData.value.event_type_id === 9,
+    event__accent_border: eventData.value.event_type_id === 10,
   };
 });
 </script>
