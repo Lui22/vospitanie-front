@@ -26,8 +26,13 @@
     width: max-content;
 
     padding: 3px 4px;
-    font: var(--chips);
     border-radius: 4px;
+    font: var(--chips);
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     box-shadow: var(--elevation-1);
 }
@@ -80,6 +85,11 @@
 .chip_teal {
     background: var(--teal-bg);
     color: var(--teal-primary);
+}
+
+.chip_link {
+    margin-block: 10px;
+    margin-left: -40px;
 }
 
 .calendar {

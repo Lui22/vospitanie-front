@@ -6,10 +6,60 @@
       <h2>Создать мероприятие</h2>
       <NewEventComponent />
 
-      <h2>Рабочая программа</h2>
+      <h2>Рабочие программы воспитания обучающихся</h2>
       <ul class="events__text">
         <li>
-          <a class="text__link" href="#"> Ссылка от МН </a>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>
+              09.02.06 Сетевое и системное администрирование 2022–2026 гг.
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>
+              09.02.07 (Разработчик веб и мультимедийных приложений) 2022–2026
+              гг.
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>09.02.07 (Программист) 2022–2026 гг.</span>
+          </a>
+        </li>
+        <li>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>
+              10.02.05 Обеспечение информационной безопасности
+              автоматизированных систем 2022–2026 гг.
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>
+              11.02.16 Монтаж, техническое обслуживание и ремонт электронных
+              приборов и устройств 2022–2026 гг.
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="chip chip_purple chip_link" href="#">
+            <img src="../assets/icons/link-45deg.svg" alt="" />
+
+            <span>42.02.01 Реклама 2022–2026 гг. </span>
+          </a>
         </li>
       </ul>
 

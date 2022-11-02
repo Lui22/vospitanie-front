@@ -53,6 +53,7 @@
         placeholder="Введите текст..."
         type="text"
         @keydown.esc="$emit('close')"
+        @keydown.enter="sendMessage"
         v-model="messageText"
       />
       <button class="button button_accent" @click="sendMessage">
