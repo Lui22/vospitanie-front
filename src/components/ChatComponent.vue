@@ -72,7 +72,7 @@ import axiosRequest from "@/helpers/axiosRequest";
 
 const emit = defineEmits(["close"]);
 
-const messages = ref({});
+const messages = ref([]);
 const loadMessages = async () => {
   messages.value = (await axiosRequest.get("message")).data.data;
 };
