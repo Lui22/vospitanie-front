@@ -20,27 +20,27 @@
             <EventAttenderComponent
               v-for="(el, ind) in eventData.attenders"
               :key="ind"
-              :name="el.name"
               :group="el.group"
+              :name="el.name"
             />
           </div>
         </div>
         <div class="">
           <SignupForEventComponent
-            :eventId="eventId"
             v-if="eventData.can_sign_up"
-            @close="destroySignup"
             ref="signup"
+            :eventId="eventId"
+            @close="destroySignup"
           />
         </div>
       </div>
 
-      <p class="event__description" v-if="false">
+      <p v-if="false" class="event__description">
         Краткое описание мероприятия содержит в себе дополнительную информацию,
         которая непонятна из заполняемых данных. Ее заполняет пользователь,
         создающий мероприятие
       </p>
-      <p class="event__description" v-if="eventId == 7">
+      <p v-if="eventId == 7" class="event__description">
         Встреча студентов с представителями компании "INTEC" 13 сентября 2022
         года отечественные разработчики софта, знатоки программного кода,
         алгоритмов и цифровых технологий отмечают свой профессиональный праздник
@@ -57,7 +57,7 @@
         как профессионала, обсудили роли в командной разработке над одним
         программным продуктом.
       </p>
-      <p class="event__description" v-if="eventId == 9">
+      <p v-if="eventId == 9" class="event__description">
         16 сентября для студентов 1 курса ЧРТ на стадионе «Инга» МБУ СШОР №1 по
         конькобежному спорту г. Челябинск прошёл физкультурно-спортивный
         праздник «День здоровья». Цель мероприятия - популяризация физической
@@ -66,7 +66,7 @@
         студентов 1 курса, выявление сильнейших команд, укрепление дружеских
         отношений между соревнующимися.
       </p>
-      <p class="event__description" v-if="eventId == 14">
+      <p v-if="eventId == 14" class="event__description">
         Студенты ЧРТ в это день организовали праздничный концерт, который
         посвятили двум праздничным датам: Дню СПО (2 октября) и Дню учителя (5
         октября). В качестве поздравлений для своих педагогов ребятами
@@ -79,7 +79,7 @@
         Праздник удался на славу! Спасибо студентам и советнику директора по
         воспитанию Татьяне Сергеевне Королевой за яркий и прекрасный концерт!
       </p>
-      <p class="event__description" v-if="eventId == 15">
+      <p v-if="eventId == 15" class="event__description">
         С целью расширения знаний студентов о героических страницах истории
         города Челябинска и нашего Отечества, воспитания гражданственности,
         патриотизма, чувства гордости и уважения к историческому наследию
@@ -153,7 +153,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import axiosRequest from "@/helpers/axiosRequest";
 import { useRoute } from "vue-router";
 import SignupForEventComponent from "@/components/SignupForEventComponent.vue";
@@ -164,16 +164,25 @@ import EventAttenderComponent from "@/components/EventAttenderComponent.vue";
 const route = useRoute();
 
 const eventData = ref({});
-const eventId = route.params.eventId;
+const eventId = ref(route.params.eventId);
 const getInfo = async () => {
-  eventData.value = (await axiosRequest.get(`event/${eventId}`)).data.data;
+  eventId.value = route.params.eventId;
+  eventData.value = (
+    await axiosRequest.get(`event/${eventId.value}`)
+  ).data.data;
 };
 
 const signup = ref();
 const instance = useMotion(signup, fadeTransition);
-const destroySignup = () => {
+const destroySignup = (data) => {
   instance.variant.value = "leave";
+
+  eventData.value.attenders.push(data);
 };
+
+watch(route, () => {
+  getInfo();
+});
 
 onMounted(() => {
   getInfo();
