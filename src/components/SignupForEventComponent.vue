@@ -58,13 +58,13 @@ const signup = async (e) => {
       name: name.value,
       group: group.value,
     });
-    e.preventDefault();
+    await e.preventDefault();
 
     const { form } = useMotions();
-    form.apply("leave");
+    await form.apply("leave");
 
     setTimeout(() => {
-      emit("close");
+      emit("close", { name, group });
     }, 700);
   } catch (e) {
     console.log(e);

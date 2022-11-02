@@ -1,5 +1,5 @@
 <template>
-  <div class="event">
+  <div class="event" v-motion-fade>
     <div class="event__header">
       <svg
         xmlns="http://www.w3.org/2000/svg"
