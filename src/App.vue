@@ -14,7 +14,6 @@ const loadTempUser = async () => {
   try {
     const tempUserToken = (await axiosRequest.post("tempUser")).data.api_token;
 
-    console.log(tempUserToken);
     localStorage.setItem("bearer", tempUserToken);
   } catch (e) {
     console.log(e);
