@@ -26,10 +26,28 @@
             <span>Спортивный город</span>
           </a>
         </li>
+        <li>
+          <a
+            class="text__link text__link_image hoverable"
+            href="https://ospk.ru/"
+          >
+            <img src="../assets/links/Blood.jpg" alt="" />
+            <span>Челябинская областная станция переливания крови</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="text__link text__link_image hoverable"
+            href="https://ospk.ru/"
+          >
+            <img src="../assets/links/aXDEvg4Enf0.jpg" alt="" />
+            <span>Центр профилактического сопровождения "КОМПАС"</span>
+          </a>
+        </li>
       </ul>
 
       <h2>Предложить мероприятие</h2>
-      <NewEventComponent class="centered" />
+      <NewEventComponent />
     </div>
   </div>
 </template>

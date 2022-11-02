@@ -14,6 +14,12 @@
       </div>
 
       <div class="event__attend">
+        <SignupForEventComponent
+          v-if="eventData.can_sign_up"
+          ref="signup"
+          :eventId="eventId"
+          @close="destroySignup"
+        />
         <div class="events-column">
           <h2>Участники</h2>
           <div class="events-column__column">
@@ -24,14 +30,6 @@
               :name="el.name"
             />
           </div>
-        </div>
-        <div class="">
-          <SignupForEventComponent
-            v-if="eventData.can_sign_up"
-            ref="signup"
-            :eventId="eventId"
-            @close="destroySignup"
-          />
         </div>
       </div>
 

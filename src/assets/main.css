@@ -555,11 +555,12 @@
     column-gap: 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    box-shadow: var(--elevation-1);
 }
 
 .signup-event-form {
+    margin-block: 30px;
     display: flex;
-    margin-block: unset;
     z-index: 1;
 }
 
@@ -627,5 +628,5 @@
 .event__attend {
     display: flex;
     justify-content: space-between;
-    width: 85vw;
+    width: 69vw;
 }
